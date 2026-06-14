@@ -1,0 +1,40 @@
+﻿<Page x:Class="WpfApp2.karakterekle"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Karakter Ekleme" Background="White" Loaded="Page_Loaded">
+
+    <Grid x:Name="RootGrid" Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="KARAKTER EKLEME PANELİ" FontWeight="Bold" FontSize="24" Margin="0,0,0,12" HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+            <StackPanel Width="360">
+                <TextBlock Text="Karakter Adı" FontSize="16"/>
+                <TextBox x:Name="txtKarakterAdi" Margin="0,4,0,8" FontSize="16" Padding="6"/>
+
+                <TextBlock Text="Seslendiren Kişi" FontSize="16" Margin="0,8,0,4"/>
+                <ComboBox x:Name="cmbSeslendiren" Height="32" SelectionChanged="cmbSeslendiren_SelectionChanged"/>
+
+                <TextBlock Text="Yapım Adı" FontSize="16" Margin="0,8,0,4"/>
+                <ComboBox x:Name="cmbYapim" Height="32" SelectionChanged="cmbYapim_SelectionChanged"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,8,0,0">
+            <TextBlock Text="Mevcut Karakterler" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <DataGrid x:Name="dgKarakterler" AutoGenerateColumns="True" Height="220" Background="WhiteSmoke" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgKarakterler_SelectionChanged"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,18,0,0">
+            <Button x:Name="btnEkle" Content="EKLE" Width="120" Height="36" Background="#6366F1" Foreground="White" Click="btnEkle_Click"/>
+            <Button x:Name="btnDuzenleKarakter" Content="DÜZENLE" Width="120" Height="36" Margin="12,0,0,0" Click="btnDuzenleKarakter_Click" Background="#F59E0B"/>
+            <Button x:Name="btnGeri" Content="GERİ" Width="120" Height="36" Margin="12,0,0,0" Click="btnGeri_Click" Background="#E5E7EB"/>
+        </StackPanel>
+    </Grid>
+</Page>

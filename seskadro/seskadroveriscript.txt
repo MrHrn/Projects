@@ -1,0 +1,148 @@
+-- ====================== VERİ EKLEME ======================
+use sesKadro
+-- 1. Yapım Türleri
+SET IDENTITY_INSERT [dbo].[yapimTurleri] ON;
+INSERT INTO [dbo].[yapimTurleri] ([turId], [turAdi]) VALUES 
+    (1, N'Anime'),
+    (2, N'Bilim Kurgu'),
+    (3, N'Animasyon'),
+    (4, N'Dram'),
+    (5, N'Komedi'),
+    (1002, N'Aksiyon'),
+    (1003, N'Macera'),
+    (1004, N'Gizem'),
+    (1005, N'Gerilim');
+SET IDENTITY_INSERT [dbo].[yapimTurleri] OFF;
+GO
+
+-- 2. Yapımlar
+SET IDENTITY_INSERT [dbo].[yapimlar] ON;
+INSERT INTO [dbo].[yapimlar] ([yapimID], [yapimAdi], [yapimYili], [turu]) VALUES 
+    (1, N'solo leveling', 2024, 3),
+    (2, N'Tenkai Knights', 2013, 1),
+    (1002, N'Monsuno', 2012, 1),
+    (1003, N'Knight Rider (Kara Şimşek)', 1982, 2),
+    (1004, N'Sword Art Online', 2012, 1),
+    (1005, N'Beyblade Metal Fusion', 2009, 1),
+    (1006, N'Sherlock', 2010, 1004),
+    (1007, N'Mr.Robot', 2014, 1004),
+    (1008, N'Transformers Prime', 2010, 3);
+SET IDENTITY_INSERT [dbo].[yapimlar] OFF;
+GO
+
+-- 3. Adminler
+SET IDENTITY_INSERT [dbo].[Adminler] ON;
+INSERT INTO [dbo].[Adminler] ([id], [adminadi], [adminsoyadi], [adminmail], [adminparola])
+VALUES 
+    (1, N'Harun', N'Özdemir', N'oyuncumarasli@gmail.com', N'$2a$08$242JCwy49yNu7SdxbryaX.moZ9lmy/rZJWnpvCspjbJSx0r7ToXw2'),
+    (2, N'Gökhan', N'Kaya', N'kayag5954@gmail.com', N'$2a$08$h.TWOQsx6k6GGrQAQ91v.evFgQE5tSKAH3dQseEwMlsWx2OwTF2dG');
+SET IDENTITY_INSERT [dbo].[Adminler] OFF;
+GO
+
+-- 4. Kullanıcı Bilgileri
+SET IDENTITY_INSERT [dbo].[Kullanici_bilgileri] ON;
+INSERT INTO [dbo].[Kullanici_bilgileri] ([kullanici_id], [kullanici_ad], [kullanici_soyad], [kullanici_mail], [kullanici_sosyalmedya], [kullanici_parola], [katkipuani], [rutbe])
+VALUES 
+    (2002, N'Cem', N'', N'harunx091@gmail.com', N'', N'$2a$08$1vTdYpAXVFN23FgKQo6Xu.LPJ8DxDSdAagW0YHEvBgK1fN7cIK6Ri', 13, N'Çırak'),
+    (2004, N'Orhan', N'Gazi', N'xy@gmail.com', NULL, N'$2a$11$oT4ljCUQ5qBrl8.6x5EbwuRxQBirnKKj8P1i7flMav20KWOVWOuka', 0, N'Çaylak');
+SET IDENTITY_INSERT [dbo].[Kullanici_bilgileri] OFF;
+GO
+
+-- 5. Sanatçı Bilgileri
+SET IDENTITY_INSERT [dbo].[Sanatci_bilgileri] ON;
+INSERT INTO [dbo].[Sanatci_bilgileri] ([sanatci_id], [sanatci_adi], [sanatci_soyadi], [sanatci_mail], [sanatci_sosyalmedya], [sanatci_parola], [aktiflik_durumu])
+VALUES 
+    (2002, N'Hakkı', N'Ergök', N'x@gmail.com', NULL, N'$2a$08$8CVhXzjBegfPL2yS57Ai1.rVc/Hq7xjjomA2Bq6ktqpuXXNAEgM8K', N'aktif'),
+    (3002, N'Şebnem', N'Ünaldı', N'y@gmail.com', NULL, N'$2a$11$BWAc2sT93FuH.s4bxu7NEetLVgRuN58t4VV/TUQS6QkiC7pIC1I0a', N'aktif değil'),
+    (3004, N'Mustafa', N'Oral', N'c@gmail.com', NULL, N'$2a$11$reWg.ywNoux8NZRofL9ifO7/my4glxWcA1rm0uWEGYNUXMw4PZeV2', N'aktif değil'),
+    (3005, N'Ahmet', N'Taşar', N'c@gmail.com', NULL, N'$2a$11$XKA428bfve/rbmezhXSbGuwc/.fDSo3xmwEit7/Oiif0vTY.cuFli', N'aktif'),
+    (3006, N'Doğu', N'Aytun', N'oyuncumarasli@gmail.com', NULL, N'$2a$11$q.YOuofZ0a7AoVSxZ.6eWukNlIir47HteMb9PYH.HheOMXmCY6vZG', N'aktif'),
+    (3007, N'Savaş', N'Pat', N'c@gmail.com', NULL, N'$2a$11$lAEbViuxOsuQ/ggkY9v72eW3ZckQS9/QZ7bRdoKUXkOERT/8HH79S', N'aktif değil'),
+    (3008, N'Pınar', N'Erengil', N'c@gmail.com', NULL, N'$2a$11$ArII/pQwfha1gAERuCJJXuM.HnYdlqxKRN9LbkqqImkCi26nmZPB.', N'aktif değil'),
+    (3010, N'Sait', N'Çataldaş', N'c@gmail.com', NULL, N'$2a$11$F6ImDh.JrH9zCclNNRUP5O9GYsxPkVk6sD4zLowuyhcsNWmLXpLtK', N'aktif değil'),
+    (3011, N'Umut', N'Aksoy', N'c@gmail.com', NULL, N'$2a$11$.nk7.sA/4exQd5AZoLQXiO2yftpIf6uVKqYU0F3lf22AkQZddYuAe', N'aktif değil'),
+    (3012, N'Kadir', N'Özübek', N'c@gmail.com', NULL, N'$2a$11$392sqmmP3Sj4xyVn.gO5NeT21p92tiUE3QaR2BAyhkImb3cT562Gi', N'aktif değil'),
+    (3013, N'Ali', N'Hocaoğlu', N'c@gmail.com', NULL, N'$2a$11$CpIvaunmm4HvtFU734tdMO9xefNIYnaQn5cRUIqE7Rv7ItLff9xv2', N'aktif değil'),
+    (3015, N'Yaşar', N'Karakulak', N'c@gmail.com', N' ', N'$2a$11$L5s.taGq8/xEAPOLCLgSfeXzBA6F2I.Y/cHL3MLJBj5aFKKkEKqOq', N'aktif değil'),
+    (3016, N'Oğuz', N'Toydemir', N'c@gmail.com', N' ', N'$2a$11$q7ULW6uQelWtq126WEusbun4bgsGc6ggR8eoMSwnFTkJsdfDZhp7O', N'aktif değil'),
+    (3017, N'Fatih', N'Er', N'c@gmail.com', N' ', N'$2a$11$Wd.iibOjtK6SdHlR.3sjNujD9c9KOKsk7ws.0UPswyXFQt1gopgUu', N'aktif değil'),
+    (3019, N'Tugay', N'Erverdi', N'c@gmail.com', NULL, N'$2a$11$gjAhw3pw5q4YXFiiZeLyr./iQhan71a2Jweha/2uGHJVJoStlmkfK', N'aktif değil'),
+    (3020, N'Zeyno Burcu', N'Temel', N'c@gmail.com', N' ', N'$2a$11$FB0FJjfnv4m1hy2Teb5.3eqJlm0xbcoyUICxeOx4odjbxPJ5mO8rq', N'aktif değil'),
+    (3021, N'Suzan', N'Acun', N'c@gmail.com', N' ', N'$2a$11$N/Iw6FiQDTT8E4KMXevmbOH4EsrL2tO3XVFVaVcc6fXMt.D3kalU.', N'aktif değil'),
+    (3022, N'Levent', N'Ünsal', N'c@gmail.com', N' ', N'$2a$11$zkbOM.B5dVST2dBaPfzwP.TNl0YRZZ5m/QTGOvJ63i8J5ooGArUo2', N'aktif değil'),
+    (3023, N'Timur', N'Çayır', N'c@gmail.com', N' ', N'$2a$11$XuoFWs2Hrb/cC8QIxp4i.ue9eti76VAm/q/GzcTsR1mKBwjG8pjW2', N'aktif değil'),
+    (3024, N'Ümit', N'Belen', N'c@gmail.com', N' ', N'$2a$11$3EjvBxdZtPWWAw/HVlWZC..ImrGRF4r2IEHeZrO5xYxiPuhP62Z52', N'aktif değil'),
+    (3025, N'Tarkan', N'Koç', N'c@gmail.com', N' ', N'$2a$11$I8SxWU8rpIGVfx.xlk622uWQCuRuE4IDy8VJaIwimWQlamOEBmjza', N'aktif değil'),
+    (3026, N'Fulya', N'Ergüneş', N'c@gmail.com', N' ', N'$2a$11$RhpKmn6ps1MLw7RnRUO4AeKPiAVrH0QHZznunQDfwjNXUYR0w6bdu', N'aktif değil'),
+    (3027, N'Lori', N'Barokas', N'c@gmail.com', N' ', N'$2a$11$rQi0uG4Q6.hbNyut9JhLkexKWqlxdW3SiUcrQLzNRQF14LI9/nh2C', N'aktif değil'),
+    (3028, N'İskender', N'Bağcılar', N'c@gmail.com', N' ', N'$2a$11$Y338Pa87ycPzsn8krWt53.O8cwaxxzM5Kd84DDj/sXPfTd0xzO7Te', N'aktif değil'),
+    (3029, N'Özlem', N'Akın', N'c@gmail.com', N' ', N'$2a$11$0IkYk/zTPyM6zkOXwsIpme8Wr4PxJT.l9y02QG01CPXhyjeQMUac.', N'aktif değil'),
+    (3030, N'Ahmet', N'Tekes', N'c@gmail.com', N' ', N'$2a$11$yPPygxYRNuZTCXHTs0VCY.pUjrvRMNRb/TA9L1wbF5CC9EdWnexhG', N'aktif değil'),
+    (3031, N'Sema', N'Kahriman', N'c@gmail.com', N' ', N'$2a$11$Gklox1sVkXYWyhA/hLPDfeSYf5lUucFblwOzRJNAXjBckvR9eYWdO', N'aktif değil'),
+    (3032, N'Müfit', N'Coşkun', N'c@gmail.com', N' ', N'$2a$11$7MhCjqOafwc80wEyXokCGO.1CPmRnLNMLAy63mT.thMQ7AiFhOfmC', N'aktif değil'),
+    (3033, N'Mustafa', N'Ertarakcı', N'c@gmail.com', N' ', N'$2a$11$oSyoZ/0hKMoMehAnlQi5pe8L6TLPa6oNTFtf1TWyeNtioBr9MLMty', N'aktif değil'),
+    (3034, N'Ali Ekber', N'Diribaş', N'q@gmail.com', N' ', N'$2a$11$MhI1lKlR73OfZNsHnDfh.OUX4un4wPTmFKi9CSVTH6z3IOAOfe0H6', N'aktif');
+SET IDENTITY_INSERT [dbo].[Sanatci_bilgileri] OFF;
+GO
+
+-- 6. Karakterler
+SET IDENTITY_INSERT [dbo].[karakterler] ON;
+INSERT INTO [dbo].[karakterler] ([karakterID], [karakterAdi], [seslendirmenId], [yapimId]) VALUES 
+    (4, N'Chase Suno', 3005, 1002),
+    (5, N'Jinja', 3008, 1002),
+    (6, N'Bren', 3010, 1002),
+    (7, N'Dax', 3007, 1002),
+    (8, N'Alpha', 3011, 1002),
+    (9, N'Jeredy Suno', 3006, 1002),
+    (10, N'Dr.Emmanuel Klipse', 3012, 1002),
+    (11, N'Tek Gözlü Jack', 3013, 1002),
+    (12, N'Prof. Shandler Tallis', 3015, 1002),
+    (13, N'Kumanda Trey', 3006, 1002),
+    (14, N'Hargrave', 3016, 1002),
+    (15, N'Dom Pyro', 3017, 1002),
+    (16, N'Drezz', 3004, 1002),
+    (17, N'Tinker', 3019, 1002),
+    (18, N'Ratchet', 3020, 1002),
+    (19, N'Bay White', 3015, 2),
+    (20, N'Toxa Dalton', 3011, 2),
+    (21, N'Guren Nash', 3004, 2),
+    (22, N'Chooki Mason', 3007, 2),
+    (23, N'Gen', 3030, 2),
+    (24, N'Beni', 3031, 2),
+    (25, N'Villius', 3025, 2),
+    (26, N'Beag', 3016, 2),
+    (27, N'Boreas', 3012, 2),
+    (28, N'Eurus', 3017, 2),
+    (29, N'Scorpidon', 3017, 2),
+    (30, N'Orangor', 3010, 2),
+    (31, N'Granox', 3032, 2),
+    (32, N'Vakamei Dalton', 3031, 2),
+    (33, N'Gingka Hagane', 3011, 1005),
+    (34, N'Tsubasa Otori', 3010, 1005),
+    (35, N'Kyoya Tategami', 3004, 1005),
+    (36, N'Madoka', 3008, 1005),
+    (37, N'Optimus Prime', 3025, 1008),
+    (38, N'Megatron', 3022, 1008),
+    (39, N'Star Scream', 3030, 1008);
+SET IDENTITY_INSERT [dbo].[karakterler] OFF;
+GO
+
+-- ====================== FOREIGN KEY'LER ======================
+
+ALTER TABLE [dbo].[karakterler] WITH CHECK 
+ADD CONSTRAINT [FK_karakterler_Sanatci_bilgileri] 
+FOREIGN KEY([seslendirmenId]) REFERENCES [dbo].[Sanatci_bilgileri] ([sanatci_id]);
+GO
+
+ALTER TABLE [dbo].[karakterler] WITH CHECK 
+ADD CONSTRAINT [FK_karakterler_yapimlar] 
+FOREIGN KEY([yapimId]) REFERENCES [dbo].[yapimlar] ([yapimID]);
+GO
+
+ALTER TABLE [dbo].[yapimlar] WITH CHECK 
+ADD CONSTRAINT [FK_yapimlar_yapimTurleri] 
+FOREIGN KEY([turu]) REFERENCES [dbo].[yapimTurleri] ([turId]);
+GO
+
+PRINT 'Veritabanı ve tüm veriler başarıyla oluşturuldu.';
+GO

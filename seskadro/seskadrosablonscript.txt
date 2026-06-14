@@ -1,0 +1,81 @@
+USE [master]
+GO
+
+/****** Object: Database [sesKadro] ******/
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'sesKadro')
+    DROP DATABASE [sesKadro];
+GO
+
+CREATE DATABASE [sesKadro]
+ CONTAINMENT = NONE;
+GO
+
+USE [sesKadro];
+GO
+
+-- ====================== TABLOLAR ======================
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Adminler](
+    [id] [int] IDENTITY(1,1) NOT NULL,
+    [adminadi] [nvarchar](50) NULL,
+    [adminsoyadi] [nvarchar](50) NULL,
+    [adminmail] [nvarchar](50) NULL,
+    [adminparola] [nvarchar](255) NULL,
+    CONSTRAINT [PK_Adminler] PRIMARY KEY CLUSTERED ([id] ASC)
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[karakterler](
+    [karakterID] [int] IDENTITY(1,1) NOT NULL,
+    [karakterAdi] [nvarchar](50) NULL,
+    [seslendirmenId] [int] NULL,
+    [yapimId] [int] NULL,
+    CONSTRAINT [PK_karakterler] PRIMARY KEY CLUSTERED ([karakterID] ASC)
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[Kullanici_bilgileri](
+    [kullanici_id] [int] IDENTITY(1,1) NOT NULL,
+    [kullanici_ad] [nvarchar](50) NOT NULL,
+    [kullanici_soyad] [nvarchar](50) NOT NULL,
+    [kullanici_mail] [nvarchar](50) NOT NULL,
+    [kullanici_sosyalmedya] [nvarchar](50) NULL,
+    [kullanici_parola] [nvarchar](255) NOT NULL,
+    [katkipuani] [int] NULL,
+    [rutbe] [nvarchar](50) NULL,
+    CONSTRAINT [PK_Kullanici_bilgileri] PRIMARY KEY CLUSTERED ([kullanici_id] ASC)
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[Sanatci_bilgileri](
+    [sanatci_id] [int] IDENTITY(1,1) NOT NULL,
+    [sanatci_adi] [nvarchar](50) NOT NULL,
+    [sanatci_soyadi] [nvarchar](50) NOT NULL,
+    [sanatci_mail] [nvarchar](50) NOT NULL,
+    [sanatci_sosyalmedya] [nvarchar](50) NULL,
+    [sanatci_parola] [nvarchar](255) NOT NULL,
+    [aktiflik_durumu] [nvarchar](20) NULL,
+    CONSTRAINT [PK_Sanatci_bilgileri] PRIMARY KEY CLUSTERED ([sanatci_id] ASC)
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[yapimlar](
+    [yapimID] [int] IDENTITY(1,1) NOT NULL,
+    [yapimAdi] [nvarchar](50) NULL,
+    [yapimYili] [int] NULL,
+    [turu] [int] NULL,
+    CONSTRAINT [PK_yapimlar] PRIMARY KEY CLUSTERED ([yapimID] ASC)
+) ON [PRIMARY];
+GO
+
+CREATE TABLE [dbo].[yapimTurleri](
+    [turId] [int] IDENTITY(1,1) NOT NULL,
+    [turAdi] [nvarchar](20) NULL,
+    CONSTRAINT [PK_yapimTurleri] PRIMARY KEY CLUSTERED ([turId] ASC)
+) ON [PRIMARY];
+GO
