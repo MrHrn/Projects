@@ -1,4 +1,4 @@
-# D-Nem Projesi
+
 
 ## Veritabanı Kurulumu (Önemli!)
 
