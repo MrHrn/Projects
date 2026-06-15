@@ -12,13 +12,13 @@ Bu proje **SQL Server LocalDB** kullanmaktadır. Projeyi ilk çalıştırdığı
 3. Sol tarafta **`(localdb)\MSSQLLocalDB`** yazan yere sağ tıklayın ve **"New Query"** seçeneğini seçin.
 4. Aşağıdaki sırayla scriptleri çalıştırın:
 
-   **Adım 1:** Önce veritabanı ve tablo yapılarını oluşturan scripti çalıştırın.  
-   (`sesKadro_Tablolar.sql` veya benzeri dosya)
+   **Adım 1:** Önce veritabanı ve tablo yapılarını oluşturan scriptin bulunduğu txt dosyasından kopyalayıp sorgu ekranınızda çalıştırın.
+   (`sesKadrosablonscript.txt`)
 
-   **Adım 2:** Daha sonra verileri (Admin, Sanatçı, Kullanıcı, Karakter vb.) ekleyen scripti çalıştırın.  
-   (`sesKadro_Veri.sql` veya benzeri dosya)
+   **Adım 2:** Daha sonra verileri (Admin, Sanatçı, Kullanıcı, Karakter vb.) ekleyen scriptin bulunduğu txt dosyasından kopyalayıp sorgu ekranınızda çalıştırın.  
+   (`seskadroveriscript`)
 
-> **Not:** Scriptler başarıyla çalıştıysa altta `Veritabanı ve tüm veriler başarıyla oluşturuldu.` mesajını görmelisiniz.
+
 
 ---
 
