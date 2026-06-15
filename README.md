@@ -16,7 +16,7 @@ Bu proje **SQL Server LocalDB** kullanmaktadır. Projeyi ilk çalıştırdığı
    (`sesKadrosablonscript.txt`)
 
    **Adım 2:** Daha sonra verileri (Admin, Sanatçı, Kullanıcı, Karakter vb.) ekleyen scriptin bulunduğu txt dosyasından kopyalayıp sorgu ekranınızda çalıştırın.  
-   (`seskadroveriscript`)
+   (`seskadroveriscript.txt`)
 
 
 
