@@ -1,0 +1,45 @@
+﻿<Window x:Name="ss" x:Class="WpfApp2.sifredeg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Şifre Değiştir" 
+        Background="White"
+        Width="520" 
+        Height="420"
+        SizeToContent="Manual"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Şifre Yenileme" FontSize="20" FontWeight="Bold" Margin="0,0,0,12"/>
+
+        <StackPanel Grid.Row="1" Width="420">
+            <TextBlock Text="E-posta" FontWeight="SemiBold" Margin="0,6,0,4"/>
+            <TextBox x:Name="txtEmail" Height="34" Padding="6"/>
+
+            <TextBlock Text="Kullanıcı Türü" FontWeight="SemiBold" Margin="0,12,0,4"/>
+            <ComboBox x:Name="tip" Height="32" FontSize="14">
+                <ComboBoxItem>Admin</ComboBoxItem>
+                <ComboBoxItem>Seslendirme Sanatçısı</ComboBoxItem>
+                <ComboBoxItem>Kullanıcı</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" 
+                   Text="Açıklama: E-posta ve kullanıcı türü girildikten sonra sunucu doğrulaması yapılacak. Gönder düğmesine tıklayın."
+                   TextWrapping="Wrap" 
+                   Foreground="Gray" 
+                   Margin="0,12,0,0"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,18,0,0">
+            <Button x:Name="gonder" Content="GÖNDER" Width="120" Height="36" 
+                    Background="#3B82F6" Foreground="White" Click="gonder_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

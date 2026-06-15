@@ -136,7 +136,10 @@ namespace WpfApp2
                     "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        void list()
+        {
+            dgKarakterler.ItemsSource = connection.VeriGetir("karakterler")?.DefaultView;
+        }
         private void btnDuzenleKarakter_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedKarakterId == null)
@@ -146,7 +149,31 @@ namespace WpfApp2
                 return;
             }
 
-            // ... (düzenleme kodunu istersen buraya da aynı mantıkla yazabilirim)
+            try
+            {
+                SqlConnection con = new SqlConnection(connection.ConnectionString);
+                string sql = @"UPDATE karakterler 
+                               SET karakterAdi = @ad, yapimId = @yapim, seslendirmenId = @ses 
+                               WHERE karakterID = @id";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@ad", txtKarakterAdi.Text.Trim());
+                cmd.Parameters.AddWithValue("@yapim", _selectedYapimId.Value);
+                cmd.Parameters.AddWithValue("@ses", _selectedSeslendirenId.Value);
+                cmd.Parameters.AddWithValue("@id", _selectedKarakterId.Value);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Karakter başarıyla düzenlendi.", "Başarılı",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                
+                list(); // Tabloyu güncellemek için list() fonksiyonunu çağırıyoruz
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Karakter düzenlenirken hata oluştu:\n{ex.Message}", "Hata",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnGeri_Click(object sender, RoutedEventArgs e)

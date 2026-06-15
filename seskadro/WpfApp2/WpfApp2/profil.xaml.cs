@@ -84,48 +84,27 @@ namespace WpfApp2
         {
             try
             {
-                var ownerWindow = Window.GetWindow(this);
-                var win = new sifreyenile
+                var host = Window.GetWindow(this) as MainWindow;
+                if (host == null)
                 {
-                    Owner = ownerWindow
-                };
-
-                // Eğer session.mail doluysa pencereye öntanımlı olarak yaz
-                try
-                {
-                    if (!string.IsNullOrWhiteSpace(session.mail))
-                        win.txtEmail.Text = session.mail;
+                    MessageBox.Show("Ana pencere bulunamadı.", "Hata");
+                    return;
                 }
-                catch { /* kontrolsüz erişim ihtimali varsa sessizce atla */ }
 
-                // Kullanıcı rolünü combobox'ta seçmeye çalış
-                try
-                {
-                    if (!string.IsNullOrWhiteSpace(session.kullanici_rol))
-                    {
-                        foreach (var item in win.kullanicitip.Items)
-                        {
-                            if (item is ComboBoxItem cbi && (cbi.Content?.ToString() ?? "").Equals(session.kullanici_rol, StringComparison.OrdinalIgnoreCase))
-                            {
-                                win.kullanicitip.SelectedItem = cbi;
-                                break;
-                            }
-                            else if (item is string s && s.Equals(session.kullanici_rol, StringComparison.OrdinalIgnoreCase))
-                            {
-                                win.kullanicitip.SelectedItem = item;
-                                break;
-                            }
-                        }
-                    }
-                }
-                catch { /* güvenlik: eğer kontrol edilemezse atla */ }
+                // Menü görünürlüğünü opsiyonel olarak yönet (istediğin gibi)
+                var menu = host.GetMenuGrid();
+                if (menu != null)
+                    menu.Visibility = Visibility.Collapsed;   // veya Visible tut
 
-                // Pencereyi aç
-                win.Show();
+                // Window olarak aç
+                var sifrePencere = new sifredeg();
+                sifrePencere.ShowDialog();           // Normal açılır (arkada diğer pencereler çalışır)
+                                               // sifrePencere.ShowDialog();  // Modal açmak istersen bunu kullan (önceki pencere kilitlenir)
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Şifre değiştirme penceresi açılamadı: {ex.Message}", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Şifre değiştirme penceresi açılamadı:\n{ex.Message}",
+                                "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

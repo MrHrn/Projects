@@ -24,6 +24,7 @@ namespace WpfApp2
     /// </summary>
     public partial class yapimturuekle : Page
     {
+        int id;
         public yapimturuekle()
         {
             InitializeComponent();
@@ -31,12 +32,7 @@ namespace WpfApp2
         }
         void listele()
         {
-            SqlConnection con = new SqlConnection(connection.ConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT turAdi FROM yapimTurleri", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgYapimTurleri.ItemsSource = dt.DefaultView;
+            dgYapimTurleri.ItemsSource = connection.VeriGetir("yapimTurleri").DefaultView;
         }
         private void btnGeri_Click(object sender, RoutedEventArgs e)
         {
@@ -74,6 +70,19 @@ namespace WpfApp2
 
         private void btnEkle_Click(object sender, RoutedEventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtYapimTuru.Text))
+            {
+                MessageBox.Show("Lütfen bir yapım türü girin.", "Uyarı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (connection.kayıtkontrol("yapimTurleri", "turAdi", txtYapimTuru.Text))
+            {
+                MessageBox.Show("Bu yapım türü zaten mevcut.", "Uyarı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             SqlConnection con = new SqlConnection(connection.ConnectionString);
             SqlCommand cmd = new SqlCommand("INSERT INTO yapimTurleri (turAdi) VALUES (@yapimTuru)", con);
             cmd.Parameters.AddWithValue("@yapimTuru", txtYapimTuru.Text);
@@ -97,7 +106,46 @@ namespace WpfApp2
 
         private void btnDuzenleTur_Click(object sender, RoutedEventArgs e)
         {
+            if(id == 0)
+            {
+                MessageBox.Show("Lütfen düzenlemek için bir yapım türü seçin.", "Uyarı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(txtYapimTuru.Text))
+            {
+                MessageBox.Show("Lütfen bir yapım türü girin.", "Uyarı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            SqlConnection con = new SqlConnection(connection.ConnectionString);
+            try
+            {
+                string sql = "UPDATE yapimTurleri SET turAdi = @yapimTuru WHERE turId = @id";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@yapimTuru", txtYapimTuru.Text);
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                listele();
+                MessageBox.Show("Yapım türü başarıyla düzenlendi.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Yapım türü düzenlenirken hata: {ex.Message}", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
+        private void dgYapimTurleri_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgYapimTurleri.SelectedItem is DataRowView row)
+            {
+                txtYapimTuru.Text = row["turAdi"]?.ToString() ?? "";
+                id = row["turId"] != null ? Convert.ToInt32(row["turId"]) : 0; // ID'yi al
+
+            }
         }
     }
 }

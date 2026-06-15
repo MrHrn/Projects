@@ -8,11 +8,13 @@ using Microsoft.Data.SqlClient;
 using seskadrow;
 using WpfApp2;
 using System.Net.NetworkInformation;
+using System.IO;
 
 namespace seskadrow
 {
     public static class connection
     {
+        
         public static string ConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database= sesKadro;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         public static DataTable VeriGetir(string tableName)

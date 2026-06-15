@@ -123,8 +123,6 @@ namespace WpfApp2
                 cdm.Parameters.AddWithValue("@geciciparola", hash);
                 cdm.Parameters.AddWithValue("@mail", mail);
 
-                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
-
                 // Mail mesajı sınıfı objemizin konfigrasyonu, kısaca kargo paketinin hazırlanması
                 using (MailMessage mailMessage = new MailMessage())
                 {

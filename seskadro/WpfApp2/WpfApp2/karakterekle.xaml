@@ -28,10 +28,10 @@
 
         <StackPanel Grid.Row="2" Margin="0,8,0,0">
             <TextBlock Text="Mevcut Karakterler" FontWeight="SemiBold" Margin="0,0,0,8"/>
-            <DataGrid x:Name="dgKarakterler" AutoGenerateColumns="True" Height="220" Background="WhiteSmoke" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgKarakterler_SelectionChanged"/>
+            <DataGrid x:Name="dgKarakterler" AutoGenerateColumns="True" Height="305" Background="WhiteSmoke" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgKarakterler_SelectionChanged"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,18,0,0">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,26,0,-8">
             <Button x:Name="btnEkle" Content="EKLE" Width="120" Height="36" Background="#6366F1" Foreground="White" Click="btnEkle_Click"/>
             <Button x:Name="btnDuzenleKarakter" Content="DÜZENLE" Width="120" Height="36" Margin="12,0,0,0" Click="btnDuzenleKarakter_Click" Background="#F59E0B"/>
             <Button x:Name="btnGeri" Content="GERİ" Width="120" Height="36" Margin="12,0,0,0" Click="btnGeri_Click" Background="#E5E7EB"/>

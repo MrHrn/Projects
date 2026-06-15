@@ -30,11 +30,12 @@
             <TextBlock Text="Kayıtlı Yapımlar" Margin="0,18,0,6" FontWeight="SemiBold"/>
             <DataGrid x:Name="dgYapimlar" AutoGenerateColumns="True" Height="220" 
                       Background="WhiteSmoke" BorderBrush="#E5E7EB" BorderThickness="1" IsReadOnly="True"
-                      SelectionMode="Single" />
+                      SelectionMode="Single" SelectionChanged="dgYapimlar_SelectionChanged" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,18,0,0">
             <Button x:Name="btnKaydet" Content="KAYDET" Width="120" Height="36" Background="#10B981" Foreground="White" Click="btnKaydet_Click"/>
+            <Button x:Name="btnDuzenle" Content="DÜZENLE" Width="120" Height="36" Margin="12,0,0,0" Click="btnDuzenle_Click" Background="#F59E0B"/>
             <Button x:Name="btnGeri" Content="GERİ" Width="120" Height="36" Margin="12,0,0,0" Click="btnGeri_Click" Background="#E5E7EB"/>
         </StackPanel>
     </Grid>
