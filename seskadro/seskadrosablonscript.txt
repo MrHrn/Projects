@@ -26,6 +26,7 @@ CREATE TABLE [dbo].[Adminler](
     [adminsoyadi] [nvarchar](50) NULL,
     [adminmail] [nvarchar](50) NULL,
     [adminparola] [nvarchar](255) NULL,
+    [adminsosyal] [nvarchar](20) NULL
     CONSTRAINT [PK_Adminler] PRIMARY KEY CLUSTERED ([id] ASC)
 ) ON [PRIMARY];
 GO
