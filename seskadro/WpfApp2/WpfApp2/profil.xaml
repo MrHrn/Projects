@@ -47,7 +47,7 @@
 
                 <!-- Alt aksiyon butonları: Şifre değiştir ve Ana sayfa -->
                 <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,18,0,0" >
-                    <Button Content="Bilgilerini Düzenle" Width="160" Height="36" Margin="0,0,10,0"/>
+                    <Button Content="Bilgilerini Düzenle" Width="160" Height="36" Margin="0,0,10,0" Click="Button_Click"/>
                     <Button x:Name="btnSifreDegistir" Content="ŞİFRE DEĞİŞTİR" Width="160" Height="36" Margin="0,0,10,0" Click="btnSifreDegistir_Click"/>
                     <Button x:Name="btnAnasayfa" Content="ANASAYFA" Width="140" Height="36" Margin="0,0,0,0" Click="btnAnasayfa_Click"/>
                 </StackPanel>

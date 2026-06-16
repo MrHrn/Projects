@@ -34,7 +34,7 @@ namespace WpfApp2
                     string rutbe = null;
                     string parolakolon = null;
                     string aktiflik = null;
-
+                    string sosyalmedyakolon = null;
                     if (turcombo.SelectedItem is ComboBoxItem selectedItem)
                     {
                         secilenTur = selectedItem.Content?.ToString()?.Trim() ?? "";
@@ -47,6 +47,7 @@ namespace WpfApp2
                             adkolon = "adminadi";
                             soyadkolon = "adminsoyadi";
                             parolakolon = "adminparola";
+                            sosyalmedyakolon = "adminsosyal";
                             session.kullanici_rol = secilenTur;
                             break;
                         case "Seslendirme Sanatçısı":
@@ -56,6 +57,7 @@ namespace WpfApp2
                             soyadkolon = "sanatci_soyadi";
                             parolakolon = "sanatci_parola";
                             aktiflik = "aktiflik_durumu";
+                            sosyalmedyakolon = "sanatci_sosyalmedya";
                             session.kullanici_rol = secilenTur;
 
                             break;
@@ -68,6 +70,7 @@ namespace WpfApp2
                             puankolon = "katkipuani";
                             session.kullanici_rol = secilenTur;
                             parolakolon = "kullanici_parola";
+                            sosyalmedyakolon = "kullanici_sosyalmedya";
                             break;
                         default:
                             sorgu = null;
@@ -93,7 +96,8 @@ namespace WpfApp2
                                     session.mail = eposta.Text;
                                     session.ad = rd[adkolon].ToString();
                                     session.soyad = rd[soyadkolon].ToString();
-                                    
+                                    session.sosyalMedya = rd[sosyalmedyakolon].ToString();
+
                                     if (secilenTur == "Kullanıcı")
                                     {
                                         session.kullanicikatki_puani = rd[puankolon].ToString();

@@ -107,5 +107,33 @@ namespace WpfApp2
                                 "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var host = Window.GetWindow(this) as MainWindow;
+                if (host == null)
+                {
+                    MessageBox.Show("Ana pencere bulunamadı.", "Hata");
+                    return;
+                }
+
+                // Menü görünürlüğünü opsiyonel olarak yönet (istediğin gibi)
+                var menu = host.GetMenuGrid();
+                if (menu != null)
+                    menu.Visibility = Visibility.Collapsed;   // veya Visible tut
+
+                // Window olarak aç
+                var bilgiduzenleme = new bilgiduzenle();
+                bilgiduzenleme.ShowDialog();           // Normal açılır (arkada diğer pencereler çalışır)
+                                                     // bilgiduzenleme.ShowDialog();  // Modal açmak istersen bunu kullan (önceki pencere kilitlenir)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Bilgi düzenleme penceresi açılamadı:\n{ex.Message}",
+                                "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

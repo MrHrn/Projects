@@ -17,8 +17,10 @@ namespace WpfApp2
     {
         //sbzq uaos jjex zade uygulama şifresi
         //katkı puanı ve rütbe sadece kullanıcı rolündeki ziyaretçiler içindir
+        
         public static bool oturumdurumu { get; set; } = false;
         public static string kullanici_rutbe { get; set; } = string.Empty;
+        public static string sosyalMedya { get; set; } = string.Empty;
         public static string kullanici_rol { get; set; }
         public static string kullanicikatki_puani { get; set; } = string.Empty;//bu veriyi veri tabanına kaydederken int türüne dönüştür, kodda sorun oluşturduğu için string olarak oluşturuldu
         public static int id { get; set; } = -1;
